@@ -22,7 +22,7 @@ console.log(count());
 
 //IIFE
 
-const result = sumArray(a, b) {
-    return a + b;
+const result = (function sumArray(a, b, c, d, e) {
+    return a + b + c + d + e;
 })(1, 2, 3, 4, 5);
-console.log(result);
+console.log(result)
