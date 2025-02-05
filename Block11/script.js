@@ -1,63 +1,69 @@
-//window object
-console.log(window.innerWidth);  // Get the width of the browser window
-alert("Hello, world!");          // Display an alert box
+//high order functions
+function higherOrderFunction(callback) {
+    return callback();
+}
 
-//working with alerts, confirm, and prompt
-alert("This is an alert message.");
-const userConfirmed = confirm("Do you agree?");
-const userInput = prompt("Enter your name:");
-console.log(userInput);
+function sayHello() {
+    return "Hello, World!";
+}
 
-//navigating with location
-console.log(window.location.href);  // Get the current URL
-window.location.href = "https://www.example.com"; // Redirect to another URL
+console.log(higherOrderFunction(sayHello)); // Output: Hello, World!
 
-//managing browser history
-history.back();  // Go to the previous page
-history.forward(); // Go to the next page
+//xtra
+function applyOperation(a, b, operation) {
+    return operation(a, b);
+}
 
-//creating, reading, and deleting cookies
-// Creating a cookie
-document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2025 12:00:00 UTC; path=/";
+function add(x, y) {
+    return x + y;
+}
 
-// Reading cookies
-console.log(document.cookie);
+console.log(applyOperation(5, 3, add)); // Output: 8
 
-// Deleting a cookie
-document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+//functional utilities: map
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // Output: [2, 4, 6, 8]
 
-//using local storage
-// Storing data
-localStorage.setItem("username", "JohnDoe");
+//functional utilities: reduce
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // Output: 10
 
-// Retrieving data
-console.log(localStorage.getItem("username"));
+//functional utilities: filter
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
 
-// Removing data
-localStorage.removeItem("username");
+//xtra
+function sumEvenNumbers(arr) {
+    return arr.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+}
 
-//using session storage
-sessionStorage.setItem("theme", "dark");
-console.log(sessionStorage.getItem("theme"));
-sessionStorage.removeItem("theme");
+console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6])); // Output: 12
 
-//setTimeout: executes  function after a delay
-setTimeout(() => {
-    console.log("This message appears after 3 seconds");
-}, 3000);
+//pure functions
+function pureAdd(a, b) {
+    return a + b;
+}
 
-//setInterval: executes function repeatedly at intervals
-let count = 0;
-const interval = setInterval(() => {
-    count++;
-    console.log("Count: " + count);
-    if (count === 5) clearInterval(interval);
-}, 1000);
+//side effects
+let counter = 0;
+function increment() {
+    counter++;
+}
 
-//retrieving user's location
-navigator.geolocation.getCurrentPosition(position => {
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("Longitude: " + position.coords.longitude);
-}, error => {
-    console.error("Error getting location: ", error);
-});
+//function composition
+const multiplyBy2 = num => num * 2;
+const subtract3 = num => num - 3;
+const compose = (f, g) => x => f(g(x));
+
+const newFunction = compose(multiplyBy2, subtract3);
+console.log(newFunction(5)); // Output: 4
+
+//currying
+const curriedAdd = a => b => a + b;
+console.log(curriedAdd(3)(4)); // Output: 7
+
+//partial application
+const multiply = (a, b) => a * b;
+const double = multiply.bind(null, 2);
+console.log(double(5)); // Output: 10
