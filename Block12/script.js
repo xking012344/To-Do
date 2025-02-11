@@ -1,3 +1,6 @@
+//start of Unit01 Advanced Vanilla Javascript
+
+
 //obtaining, chaining, and nullish coalescing
 const user = {
     profile: {

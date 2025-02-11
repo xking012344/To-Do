@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--intro to HTML forms-->
+    <title>Basic Form</title>
+</head>
+<body>
+    <form action="submit.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!--Form Elements-->
+    <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <br>
+
+        <label>Subscribe to newsletter:</label>
+        <input type="checkbox" name="subscribe"><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="us">USA</option>
+            <option value="uk">UK</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!--Form Validation with JavaScript-->
+    <form onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span id="error"></span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            let username = document.getElementById("username").value;
+            if (username === "") {
+                document.getElementById("error").innerText = "Username is required";
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <!--Styling forms with CSS-->
+    <style>
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+        input:focus {
+            border-color: blue;
+        }
+    </style>
+    <form>
+        <input type="text" placeholder="Enter your name">
+    </form>
+
+    <!--Example: Survey Form-->
+    <form>
+        <label>Name:</label>
+        <input type="text" required>
+        <br>
+        <label>Age:</label>
+        <input type="number" required>
+        <br>
+        <label>Favorite Color:</label>
+        <input type="text">
+        <br>
+        <label>Subscribe:</label>
+        <input type="checkbox">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!--Example: Enhanced CSS Form-->
+    <style>
+        input {
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+        }
+        input[type="submit"] {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+    <form>
+        <input type="text" placeholder="Enter Name">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
